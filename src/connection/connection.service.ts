@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { NewConnectionDto } from "./dto";
+import { NewConnectionDto, CallApiDto } from "./dto";
 import { ConnectionData } from "./connection.data";
 import * as argon from "argon2";
 
@@ -19,7 +19,10 @@ export class ConnectionService {
             return connection ? reference : 'Error creating connection'
         } else return 'This provider is not supported yet'
     }
-    async callApi() {
+    async callApi(dto: CallApiDto) {
+        // Get connection based on reference - extract URL
+        // Construct URL to call based on connection method
+        // Call Third party API and return response
         return 'Call api has been initiated'
     }
 }

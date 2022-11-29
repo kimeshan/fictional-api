@@ -16,7 +16,6 @@ export class ConnectionController {
 
     @Post('call')
     callApi(@Body() dto: CallApiDto) {
-        console.log({dto})
-        return this.connService.callApi()
+        return this.connService.callApi(dto)
     }
 }
