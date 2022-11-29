@@ -9,3 +9,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Provider {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model Connection {
+  id                Int      @id @default(autoincrement())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  provider          String
+  provId            Int //foreign key
+  basicAuthUsername String?
+  basicAuthPassword String?
+  accessToken       String?
+  reference         String
+}
+
+enum AuthType {
+  HTTPBasicAuth
+  AccessToken
+}
