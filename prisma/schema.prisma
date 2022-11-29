@@ -12,8 +12,8 @@ datasource db {
 
 model Provider {
   id         Int          @id @default(autoincrement())
-  name       String
-  url        String
+  name       String       @unique
+  url        String       @unique
   Connection Connection[]
 }
 

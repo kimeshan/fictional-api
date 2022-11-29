@@ -11,8 +11,7 @@ export class ConnectionController {
     }
     @Post('new')
     newConnection(@Body() dto: NewConnectionDto) {
-        console.log({dto})
-        return this.connService.newConnection()
+        return this.connService.newConnection(dto)
     }
 
     @Post('call')
