@@ -1,12 +1,30 @@
-export interface NewConnectionDto {
-    provider: String, 
-    basicAuthUsername: String,
-    basicAuthPassword: String,
-    accessToken: String,
+import {IsNotEmpty, IsString} from "class-validator"
+
+export class NewConnectionDto {
+    @IsString()
+    @IsNotEmpty()
+    provider: String;
+
+    @IsString()
+    basicAuthUsername: String
+
+    @IsString()
+    basicAuthPassword: String
+
+    @IsString()
+    accessToken: String
 }
 
-export interface CallApiDto {
-    reference: String, 
-    path: String,
-    connectionMethod: String,
+export class CallApiDto {
+    @IsString()
+    @IsNotEmpty()
+    reference: String;
+
+    @IsString()
+    @IsNotEmpty()
+    path: String;
+
+    @IsString()
+    @IsNotEmpty()
+    connectionMethod: String;
 }
