@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString} from "class-validator"
+import {IsNotEmpty, IsString, IsOptional} from "class-validator"
 
 export class NewConnectionDto {
     @IsString()
@@ -6,12 +6,15 @@ export class NewConnectionDto {
     provider: String;
 
     @IsString()
+    @IsOptional()
     basicAuthUsername: String
 
     @IsString()
+    @IsOptional()
     basicAuthPassword: String
 
     @IsString()
+    @IsOptional()
     accessToken: String
 }
 

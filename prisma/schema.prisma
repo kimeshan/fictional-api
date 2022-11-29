@@ -11,15 +11,17 @@ datasource db {
 }
 
 model Provider {
-  id   Int    @id @default(autoincrement())
-  name String
+  id         Int          @id @default(autoincrement())
+  name       String
+  url        String
+  Connection Connection[]
 }
 
 model Connection {
   id                Int      @id @default(autoincrement())
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  provider          String
+  provider          Provider @relation(fields: [provId], references: [id])
   provId            Int //foreign key
   basicAuthUsername String?
   basicAuthPassword String?
@@ -27,7 +29,7 @@ model Connection {
   reference         String
 }
 
-enum AuthType {
-  HTTPBasicAuth
-  AccessToken
-}
+// enum AuthType {
+//   HTTPBasicAuth
+//   AccessToken
+// }

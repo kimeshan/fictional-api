@@ -15,7 +15,7 @@ describe('ConnectionController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
+    it('should return welcome message', () => {
       expect(connController.welcome()).toBe(
         'Welcome to the Connection module of Fictional API!'
         );
