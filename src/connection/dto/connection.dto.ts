@@ -1,33 +1,38 @@
-import {IsNotEmpty, IsString, IsOptional} from "class-validator"
+import {IsNotEmpty, IsString, IsOptional, IsEnum} from "class-validator"
 
+export enum ConnectionMethod {
+    GET = 'get',
+    POST = 'post',
+}
+  
 export class NewConnectionDto {
     @IsString()
     @IsNotEmpty()
-    provider: String;
+    provider: string;
 
     @IsString()
     @IsOptional()
-    basicAuthUsername: String
+    basicAuthUsername: string
 
     @IsString()
     @IsOptional()
-    basicAuthPassword: String
+    basicAuthPassword: string
 
     @IsString()
     @IsOptional()
-    accessToken: String
+    accessToken: string
 }
 
 export class CallApiDto {
     @IsString()
     @IsNotEmpty()
-    reference: String;
+    reference: string;
 
     @IsString()
     @IsNotEmpty()
-    path: String;
+    path: string;
 
-    @IsString()
+    @IsEnum(ConnectionMethod)
     @IsNotEmpty()
-    connectionMethod: String;
+    connectionMethod: string;
 }

@@ -10,10 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Assume one AuthType for provider
+enum AuthType {
+  HTTPBasicAuth
+  AccessToken
+}
+
 model Provider {
   id         Int          @id @default(autoincrement())
   name       String       @unique
   url        String       @unique
+  authType   AuthType
   Connection Connection[]
 }
 
@@ -26,10 +33,5 @@ model Connection {
   basicAuthUsername String?
   basicAuthPassword String?
   accessToken       String?
-  reference         String
+  reference         String   @unique
 }
-
-// enum AuthType {
-//   HTTPBasicAuth
-//   AccessToken
-// }

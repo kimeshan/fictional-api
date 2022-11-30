@@ -6,10 +6,22 @@ export class ConnectionData {
     constructor(private prisma:PrismaService){}
 
     // Find provider based on name (string)
-    async getProvider(providerString) {
+    async getProvider(providerName:string) {
         return await this.prisma.provider.findUnique({
             where: {
-              name: providerString.toLowerCase(),
+              name: providerName.toLowerCase(),
+            },
+        })
+    }
+
+    // Find connection based on reference
+    async getConnection(reference:string) {
+        return await this.prisma.connection.findUnique({
+            where: {
+              reference
+            },
+            include: {
+                provider: true, // Return all fields
             },
         })
     }
@@ -32,4 +44,6 @@ export class ConnectionData {
         }
 
     }
+
+
 }
